@@ -1,10 +1,9 @@
-
+from flask import Flask, render_template, request, redirect
 from backend.data_loader import load_all_data, update_behavior
 from backend.recommender import RecommenderSystem
 import pandas as pd
 
-
-
+app = Flask(__name__)
 users, products, ratings, behavior = load_all_data("data")
 rec_system = RecommenderSystem(products, behavior, ratings)
 
