@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+
 from backend.data_loader import load_all_data, update_behavior
 from backend.recommender import RecommenderSystem
 import pandas as pd
