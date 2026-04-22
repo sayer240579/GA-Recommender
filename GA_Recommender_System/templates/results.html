@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>المنتجات المقترحة</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>المنتجات المقترحة للمستخدم رقم {{ user_id }}</h1>
+
+        <div class="cards-grid">
+
+            {% for item in recommendations %}
+            <div class="card">
+
+                <div class="card-title">
+                    المنتج رقم: {{ item.product_id }}
+                </div>
+
+                <p>الفئة: {{ item.category }}</p>
+                <p>السعر: {{ item.price }}$</p>
+
+                <div class="card-info">
+
+                    <div class="info-view">
+                        <i class="fa-solid fa-eye"></i> عدد المشاهدات: {{ item.viewed }}
+                    </div>
+
+                    <div class="info-click">
+                        <i class="fa-solid fa-mouse-pointer"></i> عدد النقرات: {{ item.clicked }}
+                    </div>
+
+                    <div class="info-buy">
+                        <i class="fa-solid fa-cart-shopping"></i> عدد المشتريات: {{ item.purchased }}
+                    </div>
+
+                    <div class="info-rate">
+                        <i class="fa-solid fa-star"></i> التقييم الحالي: {% if item.avg_rating > 0 %}
+                        {{ item.avg_rating }} ⭐ ({{ item.rating_count }} تقييمات) {% else %} لا يوجد تقييم {% endif %}
+                    </div>
+
+                </div>
+
+                <form action="/rate" method="POST">
+                    <input type="hidden" name="product_id" value="{{ item.product_id }}">
+                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                    <button class="btn">قيّم المنتج</button>
+                </form>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>اختيار المستخدم</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>اختر المستخدم لعرض التوصيات</h1>
+
+        <form action="/recommend" method="POST">
+            <label for="user_id">المستخدم:</label>
+            <select name="user_id" id="user_id" class="dropdown">
+                {% for u in users %}
+                <option value="{{ u }}">{{ u }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="btn">عرض التوصيات</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
