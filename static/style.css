@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Cairo", sans-serif;
+    background: radial-gradient(circle at top, #0f0f1a, #000000);
+    color: #e6e6ff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+    animation: fadeIn 0.8s ease;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #7df9ff;
+    letter-spacing: 1px;
+}
+
+button,
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00eaff, #0077ff);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover,
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00eaff;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    color: #7df9ff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.25);
+    transition: 0.25s;
+}
+
+select:hover,
+select:focus {
+    background: rgba(0, 0, 0, 0.65);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.45);
+    transform: scale(1.02);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 35px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.10);
+    padding: 22px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.18);
+    transition: 0.25s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 0 28px rgba(0, 255, 255, 0.35);
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #7df9ff;
+    margin-bottom: 12px;
+}
+
+.card-info {
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.card-info div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.info-view {
+    background: rgba(0, 255, 255, 0.10);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    color: #7df9ff;
+}
+
+.info-click {
+    background: rgba(255, 255, 0, 0.10);
+    border: 1px solid rgba(255, 255, 0, 0.25);
+    color: #fff799;
+}
+
+.info-buy {
+    background: rgba(0, 255, 100, 0.10);
+    border: 1px solid rgba(0, 255, 100, 0.25);
+    color: #9affc8;
+}
+
+.info-rate {
+    background: rgba(255, 0, 100, 0.10);
+    border: 1px solid rgba(255, 0, 100, 0.25);
+    color: #ff9ac8;
+}
+
+.card-info i {
+    font-size: 17px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
