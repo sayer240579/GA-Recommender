@@ -1,4 +1,5 @@
 body {
+    /* إعدادات أساسية للصفحة: خلفية، خط، توزيع العناصر */
     margin: 0;
     padding: 0;
     font-family: "Cairo", sans-serif;
@@ -12,6 +13,7 @@ body {
 }
 
 .container {
+    /* تصميم الحاوية الرئيسية */
     width: 90%;
     max-width: 900px;
     background: rgba(255, 255, 255, 0.05);
@@ -25,6 +27,7 @@ body {
 
 h1,
 h2 {
+    /* تنسيق العناوين */
     text-align: center;
     color: #7df9ff;
     letter-spacing: 1px;
@@ -32,6 +35,7 @@ h2 {
 
 button,
 .btn {
+    /* تصميم الأزرار */
     width: 100%;
     padding: 12px;
     margin-top: 15px;
@@ -46,11 +50,13 @@ button,
 
 button:hover,
 .btn:hover {
+    /* تأثير عند تمرير الماوس */
     transform: scale(1.05);
     box-shadow: 0 0 15px #00eaff;
 }
 
 select {
+    /* تصميم القائمة المنسدلة */
     width: 100%;
     padding: 12px;
     border-radius: 12px;
@@ -67,12 +73,14 @@ select {
 
 select:hover,
 select:focus {
+    /* تأثير عند التفاعل مع القائمة */
     background: rgba(0, 0, 0, 0.65);
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.45);
     transform: scale(1.02);
 }
 
 .cards-grid {
+    /* شبكة البطاقات */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
@@ -80,6 +88,7 @@ select:focus {
 }
 
 .card {
+    /* تصميم البطاقة */
     background: rgba(255, 255, 255, 0.10);
     padding: 22px;
     border-radius: 20px;
@@ -93,11 +102,13 @@ select:focus {
 }
 
 .card:hover {
+    /* تأثير عند تمرير الماوس على البطاقة */
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 0 28px rgba(0, 255, 255, 0.35);
 }
 
 .card-title {
+    /* عنوان البطاقة */
     font-size: 20px;
     font-weight: 800;
     color: #7df9ff;
@@ -105,12 +116,14 @@ select:focus {
 }
 
 .card-info {
+    /* معلومات إضافية داخل البطاقة */
     margin-top: 15px;
     font-size: 15px;
     line-height: 1.7;
 }
 
 .card-info div {
+    /* تنسيق عناصر المعلومات */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,6 +164,7 @@ select:focus {
 }
 
 @keyframes fadeIn {
+    /* حركة دخول العناصر */
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -159,4 +173,27 @@ select:focus {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+
+/* ضبط اتجاه النصوص العربية */
+
+body,
+h1,
+h2,
+h3,
+p,
+div,
+button,
+select {
+    direction: rtl;
+    text-align: center;
+}
+
+
+/* ضبط حجم العلم */
+
+.flag {
+    font-size: 32px;
+    margin-right: 6px;
 }
