@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>اختيار المستخدم</title>
+    <!-- استدعاء ملف التنسيقات -->
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -11,16 +12,21 @@
 <body>
 
     <div class="container">
+        <!-- عنوان الصفحة -->
         <h1>اختر المستخدم لعرض التوصيات</h1>
 
+        <!-- نموذج اختيار المستخدم -->
         <form action="/recommend" method="POST">
             <label for="user_id">المستخدم:</label>
+
+            <!-- قائمة منسدلة تعرض جميع المستخدمين -->
             <select name="user_id" id="user_id" class="dropdown">
                 {% for u in users %}
                 <option value="{{ u }}">{{ u }}</option>
                 {% endfor %}
             </select>
 
+            <!-- زر إرسال -->
             <button type="submit" class="btn">عرض التوصيات</button>
         </form>
     </div>
