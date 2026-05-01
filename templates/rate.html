@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>تقييم المنتج</title>
 
+    <!-- استدعاء ملف التنسيقات -->
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -13,17 +14,22 @@
 
     <div class="container">
 
+        <!-- عنوان الصفحة -->
         <h1>تقييم المنتج رقم {{ product_id }}</h1>
 
+        <!-- نموذج إدخال التقييم -->
         <form action="/save_rating" method="POST">
 
+            <!-- تمرير بيانات المستخدم والمنتج بشكل مخفي -->
             <input type="hidden" name="user_id" value="{{ user_id }}">
             <input type="hidden" name="product_id" value="{{ product_id }}">
 
+            <!-- اختيار التقييم -->
             <label style="font-weight:700; color:#7df9ff; margin-bottom:10px; display:block;">
                 اختر التقييم:
             </label>
 
+            <!-- قائمة التقييمات -->
             <select name="rating" class="rating-select" required>
                 <option value="1">⭐ 1</option>
                 <option value="2">⭐⭐ 2</option>
@@ -32,6 +38,7 @@
                 <option value="5">⭐⭐⭐⭐⭐ 5</option>
             </select>
 
+            <!-- زر الحفظ -->
             <button class="btn" type="submit">حفظ التقييم</button>
 
         </form>
