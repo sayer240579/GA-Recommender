@@ -5,29 +5,66 @@
     <meta charset="UTF-8">
     <title>المنتجات المقترحة</title>
 
+    <!-- استدعاء ملف التنسيقات -->
     <link rel="stylesheet" href="/static/style.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* تنسيق عرض العلم */
+
+        .flag {
+            font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+            font-size: 32px;
+            margin-left: 8px;
+        }
+    </style>
+    <style>
+        /* ضبط الخطوط لعرض الإيموجي بشكل صحيح */
+
+        body,
+        * {
+            font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif !important;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
 
-        <h1>المنتجات المقترحة للمستخدم رقم {{ user_id }}</h1>
+        <!-- عنوان الصفحة -->
+        <h1>
+            المنتجات المقترحة للمستخدم رقم {{ user_id }}
+        </h1>
 
+        <!-- بيانات المستخدم (العمر + البلد + العلم) -->
+        <h3 style="margin-bottom: 25px;">
+            العمر: {{ user_age }} &nbsp;&nbsp; | &nbsp;&nbsp; البلد: {{ user_country }} {% if user_flag %}
+            <span class="flag">{{ user_flag | safe }}</span> {% endif %}
+        </h3>
+
+        <!-- شبكة البطاقات لعرض المنتجات -->
         <div class="cards-grid">
 
             {% for item in recommendations %}
             <div class="card">
 
+                <!-- عنوان البطاقة -->
                 <div class="card-title">
                     المنتج رقم: {{ item.product_id }}
                 </div>
 
-                <p>الفئة: {{ item.category }}</p>
+                <!-- الفئة مع الإيموجي -->
+                <p>
+                    الفئة:
+                    <strong>{{ item.category }}</strong> {% if item.emoji %}
+                    <span style="font-size: 22px;">{{ item.emoji }}</span> {% endif %}
+                </p>
+
+                <!-- السعر -->
                 <p>السعر: {{ item.price }}$</p>
 
+                <!-- معلومات إضافية عن المنتج -->
                 <div class="card-info">
 
                     <div class="info-view">
@@ -44,15 +81,25 @@
 
                     <div class="info-rate">
                         <i class="fa-solid fa-star"></i> التقييم الحالي: {% if item.avg_rating > 0 %}
-                        {{ item.avg_rating }} ⭐ ({{ item.rating_count }} تقييمات) {% else %} لا يوجد تقييم {% endif %}
+                        {{ item.avg_rating }} ⭐️ ({{ item.rating_count }} تقييمات) {% else %} لا يوجد تقييم {% endif %}
                     </div>
 
                 </div>
 
+                <!-- زر التقييم -->
                 <form action="/rate" method="POST">
                     <input type="hidden" name="product_id" value="{{ item.product_id }}">
                     <input type="hidden" name="user_id" value="{{ user_id }}">
                     <button class="btn">قيّم المنتج</button>
+                </form>
+
+                <!-- زر الشراء -->
+                <form action="/buy" method="POST" style="margin-top: 10px;">
+                    <input type="hidden" name="product_id" value="{{ item.product_id }}">
+                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                    <button class="btn" style="background-color: #28a745;">
+                        <i class="fa-solid fa-cart-plus"></i> شراء المنتج
+                    </button>
                 </form>
 
             </div>
